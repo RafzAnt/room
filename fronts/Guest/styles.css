@@ -1,0 +1,659 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: #fff;
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #002244;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: nowrap;
+}
+
+/* Logo */
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-3px, 5px);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-3px, -5px);
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  transition: all 0.4s ease;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  background-color: #00bcd4;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: relative;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #00bcd4;
+  object-fit: cover;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  width: 180px;
+  display: none;
+  z-index: 999;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 450px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  position: relative;
+  animation: zoomIn 0.4s ease-in-out;
+}
+
+.modal-content h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.modal-content input::placeholder {
+  color: #ddd;
+}
+
+.modal-content input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px #00bcd4;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #00bcd4;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-content button:hover {
+  background: #0097a7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #f44336;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-content button {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive Styles for Mobile Hamburger Menu */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background-color: #002244;
+    width: 100%;
+    padding: 20px 0;
+    transition: left 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: calc(100vh - 70px);
+    flex-wrap: wrap;
+  }
+
+  .nav-links.show {
+    left: 0;
+    opacity: 1;
+  }
+
+  .profile-dropdown {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}
+
+/* Featured Rooms */
+/* Featured Rooms */
+.featured-rooms {
+  padding: 50px 20px;
+  background: linear-gradient(to right, #141e30, #243b55);
+  text-align: center;
+  color: #fff;
+}
+
+.featured-rooms h3 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Carousel Track */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-track {
+  display: flex;
+}
+
+/* Room Card */
+.room-card {
+  flex: 0 0 auto;
+  width: 300px;
+  margin: 0 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
+}
+
+.room-card:hover {
+  transform: scale(1.05);
+}
+
+.room-card img {
+  width: 100%;
+  height: auto;
+}
+
+.room-card h4 {
+  margin: 10px 0;
+  color: #00bcd4;
+}
+
+.room-card p {
+  color: #ccc;
+}
+
+/* Promos */
+.promos {
+  padding: 40px 20px;
+  background: linear-gradient(to right, #141e30, #243b55);
+  text-align: center;
+  color: #fff;
+}
+
+.promos h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.promo-banner {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.promo-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.promo-btn:hover {
+  background-color: #0097a7;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+  background: url('images/banner.jpg') center/cover no-repeat;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.welcome-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.welcome-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.book-now {
+  background: #00bcd4;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.book-now:hover {
+  background: #0197a6;
+}
+
+/* Booking Section Styles */
+.booking-section {
+  padding: 60px 20px;
+  background: linear-gradient(to right, #1a1f2b, #2b3648);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.booking-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: zoomIn 0.6s ease;
+}
+
+.booking-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00bcd4;
+}
+
+.booking-form .input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form label {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.booking-form input::placeholder,
+.booking-form textarea::placeholder {
+  color: #ccc;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px #00bcd4;
+}
+
+.booking-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.booking-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #00bcd4;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.booking-form button:hover {
+  background: #0197a6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+}
+
+@media (max-width: 600px) {
+  .booking-form {
+    padding: 30px 20px;
+  }
+
+  .booking-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .booking-form button {
+    font-size: 1rem;
+  }
+}
+
+[data-aos] {
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.6s;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Payment Section Styles */
+.payment-section {
+  padding: 60px 20px;
+  background: linear-gradient(to right, #1f2937, #374151);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+
+.payment-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: zoomIn 0.6s ease;
+}
+
+.payment-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00bcd4;
+}
+
+.payment-form .input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-form label {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+.payment-form input,
+.payment-form select {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.payment-form input::placeholder {
+  color: #ccc;
+}
+
+.payment-form input:focus,
+.payment-form select:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px #00bcd4;
+}
+
+.payment-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #00bcd4;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-form button:hover {
+  background: #0197a6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+}
